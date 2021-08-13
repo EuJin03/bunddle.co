@@ -29,7 +29,7 @@ const Home = () => {
           <span>Buy and sell digital goods</span>
           <Search>
             <SearchIcon />
-            <input type="text" placeholder="Search Bunddle" />
+            <input type="text" placeholder="What are you looking for?" />
           </Search>
         </Title>
         <div className="padding"></div>
@@ -79,7 +79,11 @@ const Home = () => {
 
 const Top = styled.div`
   width: 100%;
+<<<<<<< HEAD
   min-height: 75vh;
+=======
+  height: 70vh;
+>>>>>>> 8b27f15c7ce8d70a9baf818e54f4b0b37c70cd4b
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -105,12 +109,18 @@ const Nav = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+<<<<<<< HEAD
   margin-right: 15px;
+=======
+  margin-right: 50px;
+  font-family: poppins, san-serif;
+>>>>>>> 8b27f15c7ce8d70a9baf818e54f4b0b37c70cd4b
 
   button {
     color: #ffffff;
   }
 
+<<<<<<< HEAD
   a > button {
     color: #ffffff;
     padding: 16px;
@@ -119,6 +129,10 @@ const Nav = styled.div`
   }
 
   a:nth-child(2) > button > .MuiButton-label {
+=======
+  span:nth-child(2) {
+    font-weight: 800;
+>>>>>>> 8b27f15c7ce8d70a9baf818e54f4b0b37c70cd4b
     color: #7cdf96;
   }
 `;
@@ -130,9 +144,9 @@ const Title = styled.div`
   align-items: center;
   width: 30%;
   min-width: 300px;
+  font-family: "Poppins", sans-serif;
 
   h1 {
-    font-family: "Poppins", sans-serif;
     letter-spacing: -6px;
     font-weight: 500;
     font-size: 88px;
@@ -157,7 +171,7 @@ const Search = styled.div`
   align-items: center;
 
   .MuiSvgIcon-root {
-    color: #000000;
+    color: rgba(176, 176, 176, 1);
   }
 
   input {
@@ -178,6 +192,7 @@ const Search = styled.div`
 
     &::placeholder {
       opacity: 0.5;
+      font-family: "Poppins", sans-serif;
     }
   }
 `;
