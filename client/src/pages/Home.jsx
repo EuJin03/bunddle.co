@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Chip from "@material-ui/core/Chip";
 import Button from "@material-ui/core/Button";
 
+import Card from "../components/Card";
+
 import SearchIcon from "@material-ui/icons/Search";
 
 const Home = () => {
@@ -64,12 +66,7 @@ const Home = () => {
         <Popular>
           <h1>Popular</h1>
           <CardWrapper>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
+            <Card />
           </CardWrapper>
         </Popular>
       </Container>
@@ -79,11 +76,7 @@ const Home = () => {
 
 const Top = styled.div`
   width: 100%;
-<<<<<<< HEAD
   min-height: 75vh;
-=======
-  height: 70vh;
->>>>>>> 8b27f15c7ce8d70a9baf818e54f4b0b37c70cd4b
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -109,18 +102,12 @@ const Nav = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-<<<<<<< HEAD
   margin-right: 15px;
-=======
-  margin-right: 50px;
-  font-family: poppins, san-serif;
->>>>>>> 8b27f15c7ce8d70a9baf818e54f4b0b37c70cd4b
 
   button {
     color: #ffffff;
   }
 
-<<<<<<< HEAD
   a > button {
     color: #ffffff;
     padding: 16px;
@@ -129,10 +116,6 @@ const Nav = styled.div`
   }
 
   a:nth-child(2) > button > .MuiButton-label {
-=======
-  span:nth-child(2) {
-    font-weight: 800;
->>>>>>> 8b27f15c7ce8d70a9baf818e54f4b0b37c70cd4b
     color: #7cdf96;
   }
 `;
@@ -198,7 +181,7 @@ const Search = styled.div`
 `;
 
 const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   background-color: #ffffff;
   margin: 20px 120px;
 `;
@@ -229,14 +212,6 @@ const CardWrapper = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-`;
-
-const Card = styled.div`
-  flex: 0 0 220px;
-  margin: 15px;
-  border-radius: 18px;
-  height: 280px;
-  background-color: green;
 `;
 
 export default Home;
