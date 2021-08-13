@@ -16,7 +16,7 @@ const Home = () => {
           <span>Buy and sell digital goods</span>
           <Search>
             <SearchIcon />
-            <input type="text" placeholder="Search Bunddle" />
+            <input type="text" placeholder="What are you looking for?" />
           </Search>
         </Title>
         <div className="padding"></div>
@@ -27,7 +27,7 @@ const Home = () => {
 
 const Top = styled.div`
   width: 100%;
-  height: 75vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -53,6 +53,8 @@ const Nav = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-right: 50px;
+  font-family: poppins, san-serif;
 
   span {
     padding: 18px;
@@ -60,6 +62,7 @@ const Nav = styled.div`
   }
 
   span:nth-child(2) {
+    font-weight: 800;
     color: #7cdf96;
   }
 `;
@@ -71,13 +74,14 @@ const Title = styled.div`
   align-items: center;
   width: 30%;
   min-width: 300px;
+  font-family: "Poppins", sans-serif;
 
   h1 {
-    font-family: "Poppins", sans-serif;
     letter-spacing: -6px;
     font-weight: 500;
-    font-size: 70px;
+    font-size: 88px;
     margin: 0;
+    user-select: none;
   }
 
   span {
@@ -97,7 +101,7 @@ const Search = styled.div`
   align-items: center;
 
   .MuiSvgIcon-root {
-    color: #000000;
+    color: rgba(176, 176, 176, 1);
   }
 
   input {
@@ -112,6 +116,11 @@ const Search = styled.div`
 
     &:focus {
       outline: none;
+    }
+
+    &::placeholder {
+      font-family: "Poppins", sans-serif;
+      opacity: 0.7;
     }
   }
 `;
