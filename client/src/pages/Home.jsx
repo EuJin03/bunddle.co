@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Chip from "@material-ui/core/Chip";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 
 ///// Components Import /////
 
@@ -12,34 +12,55 @@ import Card from "../components/Card";
 
 import SearchIcon from "@material-ui/icons/Search";
 
+///// Home Component /////
+
 const Home = () => {
   const handleClick = () => {
     return;
   };
 
+  ///// Nav Bar Visibility Handler /////
+
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", () =>
+        setVisible(window.pageYOffset > 0)
+      );
+    }
+  }, []);
+
+  ///// Nav Bar Visibility Handler - End /////
+
   return (
     <>
-      <Header>
-        <Nav>
+      <Nav onScroll={visible}>
+        <Logo onScroll={visible}>bunddle</Logo>
+        <ButtonsWrapper>
+          <Link to={`/login`}>
+            <Button onScroll={visible}>Log In</Button>
+          </Link>
           <Link to={`/signup`}>
-            <Button>Sign Up</Button>
+            <Button onScroll={visible}>Sign Up</Button>
           </Link>
           <Link to={`/seller`}>
-            <Button>Start Selling</Button>
+            <Button className="start-selling-button" onScroll={visible}>
+              Start Selling
+            </Button>
           </Link>
-
-          <Button>En</Button>
-        </Nav>
+          <Button onScroll={visible}>En</Button>
+        </ButtonsWrapper>
+      </Nav>
+      <Header>
         <Title>
-          <h1>Bunddle</h1>
-          <span>Buy and sell digital goods</span>
+          <h1>Buy and sell digital goods</h1>
+          <span>Templates, plugins, stock images and more.</span>
           <Search>
             <SearchIcon />
             <input type="text" placeholder="What are you looking for?" />
           </Search>
         </Title>
-
-        <div className="padding"></div>
       </Header>
 
       <Container>
@@ -89,6 +110,84 @@ const Home = () => {
 
 ///// Styles /////
 
+//       Nav Bar
+
+const Nav = styled.div`
+  width: 100%;
+  display: flex;
+  background: rgba(0, 0, 0, 0);
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  position: fixed;
+  // position: -webkit-sticky;
+  // top: 0px;
+  z-index: 999;
+  transition: all 0.1s ease-in-out;
+
+  ${({ onScroll }) =>
+    onScroll &&
+    `
+    background: #fff;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  `}
+`;
+
+///// Nav bar logo /////
+
+const Logo = styled.div`
+  letter-spacing: -2px;
+  font-weight: 500;
+  font-size: 30px;
+  margin: 10px;
+  user-select: none;
+  margin-left: 30px;
+  color: #fff;
+  transition: all 0.1s ease-in-out;
+
+  ${({ onScroll }) =>
+    onScroll &&
+    `
+    color: #000;
+  `}
+`;
+
+///// Nav Bar Button /////
+
+const ButtonsWrapper = styled.div`
+  margin-right: 30px;
+`;
+
+const Button = styled.div`
+  display: inline;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  transition: all 0.1s ease-in-out;
+
+  ${({ onScroll }) =>
+    onScroll &&
+    `
+    color: #000;
+  `}
+
+  &.start-selling-button {
+    color: #7cdf96;
+    ${({ onScroll }) =>
+      onScroll &&
+      `
+    color: #49a36c;
+  `}
+  }
+
+  &:hover {
+    color: #5b876c;
+    font-size: 16px;
+  }
+`;
+
 //       Header
 
 const Header = styled.div`
@@ -114,50 +213,18 @@ const Header = styled.div`
   }
 `;
 
-//       Nav Bar
-
-const Nav = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 15px;
-
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0px;
-
-  button {
-    color: #ffffff;
-  }
-
-  a > button {
-    color: #ffffff;
-    padding: 16px;
-    font-size: 16px;
-    text-transform: capitalize;
-    font-family: "Poppins", sans-serif;
-  }
-
-  a:nth-child(2) > button > .MuiButton-label {
-    color: #7cdf96;
-    text-decoration: none;
-    font-weight: 800;
-  }
-`;
-
 const Title = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 30%;
-  min-width: 300px;
   font-family: "Poppins", sans-serif;
+  margin: auto 0;
+  text-align: center;
 
   h1 {
     letter-spacing: -6px;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 88px;
     margin: 0;
     user-select: none;
@@ -165,23 +232,20 @@ const Title = styled.div`
 
   span {
     font-size: 18px;
-    margin-top: -15px;
+    margin-top: 10px;
     padding: 0 0 20px;
   }
 `;
 
 const Search = styled.div`
   margin: auto;
-  margin-top: 0px;
-  width: 100%;
+  margin-top: 15px;
+  width: 80%;
   padding: 10px;
   background-color: #ffffff;
   border-radius: 20px;
   display: flex;
   align-items: center;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 10;
 
   .MuiSvgIcon-root {
     color: rgba(176, 176, 176, 1);
