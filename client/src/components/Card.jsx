@@ -6,7 +6,7 @@ const Card = () => {
     <>
       <CardStyle>
         <img
-          src="https://res.cloudinary.com/eujin03/image/upload/v1613504068/profile_rm9ivq.jpg"
+          src="https://cdn.discordapp.com/attachments/789102390011494405/875676743002890260/Perfect_Tones_Lightroom_Preset.jpg"
           alt="helo"
         />
         <div>
@@ -14,7 +14,7 @@ const Card = () => {
           <div>
             <span>by Eugene</span>
             <span>
-              <span>$</span>2000
+              <span>$</span>20
             </span>
           </div>
         </div>

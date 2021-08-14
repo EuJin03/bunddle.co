@@ -4,7 +4,11 @@ import styled from "styled-components";
 import Chip from "@material-ui/core/Chip";
 import Button from "@material-ui/core/Button";
 
+///// Components Import /////
+
 import Card from "../components/Card";
+
+///// Libraries Import /////
 
 import SearchIcon from "@material-ui/icons/Search";
 
@@ -15,7 +19,7 @@ const Home = () => {
 
   return (
     <>
-      <Top>
+      <Header>
         <Nav>
           <Link to={`/signup`}>
             <Button>Sign Up</Button>
@@ -34,8 +38,10 @@ const Home = () => {
             <input type="text" placeholder="What are you looking for?" />
           </Search>
         </Title>
+
         <div className="padding"></div>
-      </Top>
+      </Header>
+
       <Container>
         <Browse>
           <h1>Browse Categories</h1>
@@ -63,9 +69,16 @@ const Home = () => {
             </Link>
           </Wrap>
         </Browse>
+
         <Popular>
           <h1>Popular</h1>
           <CardWrapper>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
             <Card />
           </CardWrapper>
         </Popular>
@@ -74,7 +87,11 @@ const Home = () => {
   );
 };
 
-const Top = styled.div`
+///// Styles /////
+
+//       Header
+
+const Header = styled.div`
   width: 100%;
   min-height: 75vh;
   display: flex;
@@ -97,12 +114,18 @@ const Top = styled.div`
   }
 `;
 
+//       Nav Bar
+
 const Nav = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-right: 15px;
+
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
 
   button {
     color: #ffffff;
@@ -113,10 +136,13 @@ const Nav = styled.div`
     padding: 16px;
     font-size: 16px;
     text-transform: capitalize;
+    font-family: "Poppins", sans-serif;
   }
 
   a:nth-child(2) > button > .MuiButton-label {
     color: #7cdf96;
+    text-decoration: none;
+    font-weight: 800;
   }
 `;
 
@@ -145,13 +171,17 @@ const Title = styled.div`
 `;
 
 const Search = styled.div`
-  margin-top: 10px;
+  margin: auto;
+  margin-top: 0px;
   width: 100%;
   padding: 10px;
   background-color: #ffffff;
   border-radius: 20px;
   display: flex;
   align-items: center;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 10;
 
   .MuiSvgIcon-root {
     color: rgba(176, 176, 176, 1);
@@ -179,6 +209,8 @@ const Search = styled.div`
     }
   }
 `;
+
+//       Categories
 
 const Container = styled.div`
   min-height: 100vh;
