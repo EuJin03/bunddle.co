@@ -148,7 +148,7 @@ const Logo = styled.div`
   ${({ onScroll }) =>
     onScroll &&
     `
-    color: #000;
+    color: #2fe070;
   `}
 `;
 
@@ -162,10 +162,11 @@ const Button = styled.div`
   display: inline;
   padding: 10px 15px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: #fff;
   transition: all 0.1s ease-in-out;
+  display: inline-block;
 
   ${({ onScroll }) =>
     onScroll &&
@@ -174,17 +175,19 @@ const Button = styled.div`
   `}
 
   &.start-selling-button {
-    color: #7cdf96;
+    color: #4ced87;
+    font-weight: 600;
+
     ${({ onScroll }) =>
       onScroll &&
       `
-    color: #49a36c;
+    color: #2fe070;
   `}
   }
 
   &:hover {
-    color: #5b876c;
-    font-size: 16px;
+    color: #1ca34d;
+    transform: translateY(-0.2em);
   }
 `;
 
@@ -197,15 +200,19 @@ const Header = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background: rgb(61, 61, 61);
-  background: linear-gradient(
-    126deg,
-    rgba(61, 61, 61, 1) 0%,
-    rgba(74, 74, 74, 1) 25%,
-    rgba(61, 61, 61, 1) 50%,
-    rgba(66, 75, 67, 1) 75%,
-    rgba(61, 61, 61, 1) 100%
-  );
+  // background: rgb(61, 61, 61);
+  // background: linear-gradient(
+  //   126deg,
+  //   rgba(61, 61, 61, 1) 0%,
+  //   rgba(74, 74, 74, 1) 25%,
+  //   rgba(61, 61, 61, 1) 50%,
+  //   rgba(66, 75, 67, 1) 75%,
+  //   rgba(61, 61, 61, 1) 100%
+  // );
+
+  background-color: #0b89bf;
+  background-image: linear-gradient(300deg, #0b89bf 0%, #2fe070 74%);
+
   color: #f1f1f1;
 
   .padding {
@@ -227,7 +234,6 @@ const Title = styled.div`
     font-weight: 700;
     font-size: 88px;
     margin: 0;
-    user-select: none;
   }
 
   span {
