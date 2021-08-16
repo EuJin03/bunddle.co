@@ -1,29 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-const Card = () => {
-  return (
-    <>
-      <CardStyle>
-        <img
-          src="https://cdn.discordapp.com/attachments/789102390011494405/875676743002890260/Perfect_Tones_Lightroom_Preset.jpg"
-          alt="helo"
-        />
-        <div>
-          <p>Lightroom preset - Dark & Moody</p>
-          <div>
-            <span>by Eugene</span>
-            <span>
-              <span>$</span>20
-            </span>
-          </div>
-        </div>
-      </CardStyle>
-    </>
-  );
-};
-
-const CardStyle = styled.div`
+export const CardStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,5 +51,3 @@ const CardStyle = styled.div`
     font-size: 14px;
   }
 `;
-
-export default Card;
