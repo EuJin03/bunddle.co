@@ -1,5 +1,27 @@
 import styled from "styled-components";
 
+///// Media Query /////
+
+const size = {
+  mobileS: "320px",
+  mobileM: "375px",
+  mobileL: "425px",
+  tablet: "768px",
+  laptop: "1024px",
+  laptopL: "1440px",
+  desktop: "2560px",
+};
+
+export const device = {
+  mobileS: `(max-width: ${size.mobileM}) and (min-width: ${size.mobileS})`,
+  mobileM: `(max-width: ${size.mobileL}) and (min-width: ${size.mobileM})`,
+  mobileL: `(max-width: ${size.tablet}) and (min-width: ${size.mobileL})`,
+  tablet: `(max-width: ${size.laptop}) and (min-width: ${size.tablet})`,
+  laptop: `(max-width: ${size.laptopL}) and (min-width: ${size.laptop})`,
+  laptopL: `(max-width: ${size.desktop}) and (min-width: ${size.laptopL})`,
+  desktop: `(min-width: ${size.desktop})`,
+};
+
 ///// Styles /////
 
 //       Nav Bar
@@ -17,8 +39,8 @@ export const NavBar = styled.div`
   z-index: 999;
   transition: all 0.1s ease-in-out;
 
-  ${({ onScroll }) =>
-    onScroll &&
+  ${({ isScrolled }) =>
+    isScrolled &&
     `
     background: #fff;
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -37,8 +59,8 @@ export const NavBarLogo = styled.div`
   color: #fff;
   transition: all 0.1s ease-in-out;
 
-  ${({ onScroll }) =>
-    onScroll &&
+  ${({ isScrolled }) =>
+    isScrolled &&
     `
     color: #2fe070;
   `}
@@ -65,8 +87,8 @@ export const NavBarButton = styled.div`
     transform: translateY(-0.2em);
   }
 
-  ${({ onScroll }) =>
-    onScroll &&
+  ${({ isScrolled }) =>
+    isScrolled &&
     `
     color: #000;
   `}
@@ -79,8 +101,8 @@ export const NavBarButton = styled.div`
       color: #4fc279;
     }
 
-    ${({ onScroll }) =>
-      onScroll &&
+    ${({ isScrolled }) =>
+      isScrolled &&
       `
     color: #2fe070;
   `}
@@ -124,6 +146,7 @@ export const HeroTitle = styled.div`
   font-family: "Poppins", sans-serif;
   margin: auto 0;
   text-align: center;
+  max-width: 80%;
 
   h1 {
     letter-spacing: -6px;
@@ -136,6 +159,12 @@ export const HeroTitle = styled.div`
     font-size: 18px;
     margin-top: 10px;
     padding: 0 0 20px;
+  }
+
+  @media (max-width: 550px) and (min-width: ${size.mobileS}) {
+    h1 {
+      font-size: 60px;
+    }
   }
 `;
 
@@ -219,9 +248,30 @@ export const Footer = styled.div`
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   padding: 40px 400px;
   text-align: center;
+  width: 100%;
 
   .emailRedirect {
     color: #2fe070;
+  }
+
+  @media (max-width: 1630px) and (min-width: ${size.laptop}) {
+    padding: 40px 200px;
+  }
+
+  @media ${device.tablet} {
+    padding: 40px 130px;
+  }
+
+  @media ${device.mobileL} {
+    padding: 40px 70px;
+  }
+
+  @media ${device.mobileM} {
+    padding: 40px 50px;
+  }
+
+  @media ${device.mobileS} {
+    padding: 40px 30px;
   }
 `;
 
@@ -253,8 +303,7 @@ export const FooterColumn = styled.div`
     display: block;
     width: 100%;
     margin: 12px auto;
-    opacity: 0.6;
-    color: #000;
+    color: #595959;
   }
 
   a:active {
@@ -282,7 +331,7 @@ export const FooterLegals = styled.div`
   text-align: center;
 
   span {
-    opacity: 0.5;
+    color: #595959;
     margin: 0 10px;
   }
 

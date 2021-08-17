@@ -48,21 +48,24 @@ const Home = () => {
 
   return (
     <>
-      <S.NavBar onScroll={visible}>
-        <S.NavBarLogo onScroll={visible}>bunddle</S.NavBarLogo>
+      <S.NavBar isScrolled={visible}>
+        <S.NavBarLogo isScrolled={visible}>bunddle</S.NavBarLogo>
         <S.NavBarButtonsWrapper>
           <Link to={`/login`}>
-            <S.NavBarButton onScroll={visible}>Log In</S.NavBarButton>
+            <S.NavBarButton isScrolled={visible}>Log In</S.NavBarButton>
           </Link>
           <Link to={`/signup`}>
-            <S.NavBarButton onScroll={visible}>Sign Up</S.NavBarButton>
+            <S.NavBarButton isScrolled={visible}>Sign Up</S.NavBarButton>
           </Link>
           <Link to={`/seller`}>
-            <S.NavBarButton className="start-selling-button" onScroll={visible}>
+            <S.NavBarButton
+              className="start-selling-button"
+              isScrolled={visible}
+            >
               Start Selling
             </S.NavBarButton>
           </Link>
-          {/* <Button onScroll={visible}>En</Button> */}
+          {/* <Button isScrolled={visible}>En</Button> */}
         </S.NavBarButtonsWrapper>
       </S.NavBar>
       <S.Hero>
@@ -132,50 +135,50 @@ const Home = () => {
         </S.FooterLogo>
         <S.FooterColumn>
           <span>Categories</span>
-          <Link>Audio and Music</Link>
-          <Link>Gaming</Link>
-          <Link>Images</Link>
-          <Link>Application</Link>
+          <Link to="">Audio and Music</Link>
+          <Link to="">Gaming</Link>
+          <Link to="">Images</Link>
+          <Link to="">Application</Link>
         </S.FooterColumn>
         <S.FooterColumn>
           <span>Support</span>
-          <Link>FAQs</Link>
-          <Link>Forums</Link>
-          <Link>Contact Us</Link>
+          <Link to="">FAQs</Link>
+          <Link to="">Forums</Link>
+          <Link to="">Contact Us</Link>
         </S.FooterColumn>
         <S.FooterColumn>
           <span>About Us</span>
-          <Link>Background</Link>
-          <Link>Careers</Link>
-          <Link>Partners</Link>
+          <Link to="">Background</Link>
+          <Link to="">Careers</Link>
+          <Link to="">Partners</Link>
         </S.FooterColumn>
         <span>Need help? Send us an Email </span>
-        <a href="" className={"emailRedirect"}>
+        <Link to="" className={"emailRedirect"}>
           here.
-        </a>
+        </Link>
         <S.FooterSocialMedia>
-          <a href="https://fb.com">
+          <Link to="https://fb.com">
             {/* <FontAwesomeIcon
               icon={["fab", "facebook-f"]}
               size="2x"
               fixedWidth
             /> */}
             <FacebookIcon></FacebookIcon>
-          </a>
-          <a href="http://twitter.com">
+          </Link>
+          <Link to="http://twitter.com">
             {/* <FontAwesomeIcon icon={["fab", "twitter"]} size="2x" fixedWidth /> */}
             <TwitterIcon></TwitterIcon>
-          </a>
-          <a href="https://instagram.com">
+          </Link>
+          <Link to="https://instagram.com">
             {/* <FontAwesomeIcon icon={["fab", "instagram"]} size="2x" fixedWidth /> */}
             <InstagramIcon></InstagramIcon>
-          </a>
+          </Link>
         </S.FooterSocialMedia>
         <S.FooterLegals>
           <span>© 2021 Bunddle</span>
-          <Link>Terms of Use</Link>
-          <Link>Privacy Policy</Link>
-          <Link>Site Map</Link>
+          <Link to="">Terms of Use</Link>
+          <Link to="">Privacy Policy</Link>
+          <Link to="">Site Map</Link>
         </S.FooterLegals>
       </S.Footer>
     </>
