@@ -55,13 +55,17 @@ export const Footer = styled.div`
 `;
 
 export const FooterLogo = styled.div`
+  width: 100%;
   letter-spacing: -2px;
   font-weight: 500;
   font-size: 30px;
   user-select: none;
-  color: #2fe070;
-  margin-bottom: 40px;
   text-align: center;
+  margin-bottom: 40px;
+
+  span {
+    color: #2fe070;
+  }
 `;
 
 export const FooterColumn = styled.div`

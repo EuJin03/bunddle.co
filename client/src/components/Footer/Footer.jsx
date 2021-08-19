@@ -11,29 +11,31 @@ const Footer = () => {
     <>
       <S.Footer>
         <S.FooterLogo>
-          <span>bunddle</span>
+          <Link to="/">
+            <span>bunddle</span>
+          </Link>
         </S.FooterLogo>
         <S.FooterColumn>
           <span>Categories</span>
-          <Link to="">Audio and Music</Link>
-          <Link to="">Gaming</Link>
-          <Link to="">Images</Link>
-          <Link to="">Application</Link>
+          <Link to="#">Audio and Music</Link>
+          <Link to="#">Gaming</Link>
+          <Link to="#">Images</Link>
+          <Link to="#">Application</Link>
         </S.FooterColumn>
         <S.FooterColumn>
           <span>Support</span>
-          <Link to="">FAQs</Link>
-          <Link to="">Forums</Link>
-          <Link to="">Contact Us</Link>
+          <Link to="#">FAQs</Link>
+          <Link to="#">Forums</Link>
+          <Link to="#">Contact Us</Link>
         </S.FooterColumn>
         <S.FooterColumn>
           <span>About Us</span>
-          <Link to="">Background</Link>
-          <Link to="">Careers</Link>
-          <Link to="">Partners</Link>
+          <Link to="#">Background</Link>
+          <Link to="#">Careers</Link>
+          <Link to="#">Partners</Link>
         </S.FooterColumn>
         <span>Need help? Send us an Email </span>
-        <Link to="" className={"emailRedirect"}>
+        <Link to="#" className={"emailRedirect"}>
           here.
         </Link>
         <S.FooterSocialMedia>
@@ -56,9 +58,9 @@ const Footer = () => {
         </S.FooterSocialMedia>
         <S.FooterLegals>
           <span>© 2021 Bunddle</span>
-          <Link to="">Terms of Use</Link>
-          <Link to="">Privacy Policy</Link>
-          <Link to="">Site Map</Link>
+          <Link to="/legals">Terms of Use</Link>
+          <Link to="/legals">Privacy Policy</Link>
+          <Link to="/site-map">Site Map</Link>
         </S.FooterLegals>
       </S.Footer>
     </>

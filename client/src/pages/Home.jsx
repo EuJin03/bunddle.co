@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import MaterialUIChip from "@material-ui/core/Chip";
 import * as S from "./Home-styled";
@@ -7,6 +7,7 @@ import * as S from "./Home-styled";
 ///// Components Import /////
 
 import Card from "../components/Card/Card";
+import NavBar from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
 
 ///// Libraries Import /////
@@ -31,42 +32,9 @@ const Home = () => {
     return;
   };
 
-  ///// Nav Bar Visibility Handler /////
-
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", () =>
-        setVisible(window.pageYOffset > 0)
-      );
-    }
-  }, []);
-
-  ///// Nav Bar Visibility Handler - End /////
-
   return (
     <>
-      <S.NavBar isScrolled={visible}>
-        <S.NavBarLogo isScrolled={visible}>bunddle</S.NavBarLogo>
-        <S.NavBarButtonsWrapper>
-          <Link to={`/login`}>
-            <S.NavBarButton isScrolled={visible}>Log In</S.NavBarButton>
-          </Link>
-          <Link to={`/signup`}>
-            <S.NavBarButton isScrolled={visible}>Sign Up</S.NavBarButton>
-          </Link>
-          <Link to={`/seller`}>
-            <S.NavBarButton
-              className="start-selling-button"
-              isScrolled={visible}
-            >
-              Start Selling
-            </S.NavBarButton>
-          </Link>
-          {/* <Button isScrolled={visible}>En</Button> */}
-        </S.NavBarButtonsWrapper>
-      </S.NavBar>
+      <NavBar id="nav-bar" />
       <S.Hero>
         <S.HeroTitle>
           <h1>Buy and sell digital goods</h1>
