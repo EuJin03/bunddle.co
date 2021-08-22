@@ -1,31 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-import ImgSlider from "./ImgSlider";
-
-const Card = () => {
-  return (
-    <>
-      <CardStyle>
-        <ImgSlider
-          src="https://res.cloudinary.com/eujin03/image/upload/v1613504068/profile_rm9ivq.jpg"
-          alt="img"
-        />
-        <div>
-          <p>Lightroom preset - Dark & Moody</p>
-          <div>
-            <span>by Eugene</span>
-            <span>
-              <span>$</span>2000
-            </span>
-          </div>
-        </div>
-      </CardStyle>
-    </>
-  );
-};
-
-const CardStyle = styled.div`
+export const CardStyle = styled.div`
   display: flex;
   margin-bottom: 20px;
   flex-direction: column;
@@ -68,5 +43,3 @@ const CardStyle = styled.div`
     font-size: 14px;
   }
 `;
-
-export default Card;
