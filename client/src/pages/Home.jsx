@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Chip from "@material-ui/core/Chip";
@@ -9,6 +9,64 @@ import Card from "../components/Card";
 import SearchIcon from "@material-ui/icons/Search";
 
 const Home = () => {
+  const [scrollPosition, setPosition] = useState(0);
+  const [toggle, setToggle] = useState(false);
+
+  const Search = styled.div`
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    position: ${toggle ? "fixed" : "block"};
+    ${toggle && "top: 10px; width: 30%;"}
+
+    .MuiSvgIcon-root {
+      color: rgba(176, 176, 176, 1);
+    }
+
+    input {
+      border: none;
+      background-color: transparent;
+      outline-width: 0;
+      width: 100%;
+      height: 100%;
+      padding: 2px;
+      margin-left: 10px;
+      font-size: 15px;
+      font-family: poppins, sans-serif;
+      font-weight: 400;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        opacity: 0.5;
+        font-family: "Poppins", sans-serif;
+      }
+    }
+  `;
+
+  useLayoutEffect(() => {
+    function updatePosition() {
+      setPosition(window.pageYOffset);
+    }
+    window.addEventListener("scroll", updatePosition);
+    console.log(scrollPosition);
+    updatePosition();
+
+    if (scrollPosition > 270) {
+      setToggle(true);
+    } else {
+      setToggle(false);
+    }
+
+    return () => window.removeEventListener("scroll", updatePosition);
+  }, [scrollPosition]);
+
   const handleClick = () => {
     return;
   };
@@ -66,6 +124,11 @@ const Home = () => {
         <Popular>
           <h1>Popular</h1>
           <CardWrapper>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
             <Card />
           </CardWrapper>
         </Popular>
@@ -144,42 +207,6 @@ const Title = styled.div`
   }
 `;
 
-const Search = styled.div`
-  margin-top: 10px;
-  width: 100%;
-  padding: 10px;
-  background-color: #ffffff;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-
-  .MuiSvgIcon-root {
-    color: rgba(176, 176, 176, 1);
-  }
-
-  input {
-    border: none;
-    background-color: transparent;
-    outline-width: 0;
-    width: 100%;
-    height: 100%;
-    padding: 2px;
-    margin-left: 10px;
-    font-size: 15px;
-    font-family: poppins, sans-serif;
-    font-weight: 400;
-
-    &:focus {
-      outline: none;
-    }
-
-    &::placeholder {
-      opacity: 0.5;
-      font-family: "Poppins", sans-serif;
-    }
-  }
-`;
-
 const Container = styled.div`
   min-height: 100vh;
   background-color: #ffffff;
@@ -208,8 +235,9 @@ const Popular = styled.div`
 `;
 
 const CardWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 230px);
+  grid-gap: 10px;
   align-items: center;
   justify-content: space-between;
 `;
