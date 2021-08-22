@@ -1,26 +1,29 @@
 import jwt from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
+import { AuthenticationError } from "apollo-server";
 
-const protect = asyncHandler(async (req, res, next) => {
+export const protect = asyncHandler(async (req, res, next) => {
   let token;
 
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer")
-  ) {
-    try {
-      token = req.headers.authorization.split(" ")[1];
+  const authHeader = context.req.headers.authorization;
 
-      const { id } = jwt.verify(token, process.env.JWT_SECRET); //decoded
+  if (authHeader) {
+    token = authHeader.split(" ")[1];
 
-      req.user = await User.findById(id).select("-password"); //important
+    if (token) {
+      try {
+        const { id } = jwt.verify(token, process.env.JWT_SECRET); //decoded
 
-      next();
-    } catch (error) {
-      console.error(error);
-      res.status(401);
-      throw new Error("Not authorised, token failed");
+        req.user = await User.findById(id).select("-password"); //important
+
+        next();
+      } catch (error) {
+        res.status(401);
+        throw new AuthenticationError("Not authorised, token failed");
+      }
+
+      throw new Error("Authentication token must be 'Bearer [token]'");
     }
   }
 
@@ -30,15 +33,13 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 });
 
-const admin = (req, res, next) => {
-  if (req.user && req.user.isAdmin) {
+export const seller = (req, res, next) => {
+  if (req.user && req.user.isSeller) {
     next();
   } else {
     res.status(401);
-    throw new Error("Not authorized as an admin");
+    throw new Error("Not registered as an seller");
   }
 };
-
-export { protect, admin };
 
 //console.log(req.headers.authorization); // Authorization: Bearer ...
