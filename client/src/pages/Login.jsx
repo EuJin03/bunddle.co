@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import Footer from "../components/Footer/Footer";
 
-import * as S from "./Login-styled";
+import * as S from "./auth-styled";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,13 +13,13 @@ import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 library.add(faFacebookF, faGoogle);
 
-const Login = () => {
+const LoginPage = () => {
   const submitHandler = (event) => {
     event.preventDefault();
   };
 
   return (
-    <S.LoginPage>
+    <S.FormPage>
       <S.Header>
         <Link to="/">
           <span>bunddle</span>
@@ -74,8 +74,8 @@ const Login = () => {
         </button>
       </S.FormSection>
       <Footer />
-    </S.LoginPage>
+    </S.FormPage>
   );
 };
 
-export default Login;
+export default LoginPage;

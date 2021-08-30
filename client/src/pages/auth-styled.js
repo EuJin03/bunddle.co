@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LoginPage = styled.div`
+export const FormPage = styled.div`
   background-color: #fff;
 `;
 
@@ -22,10 +22,11 @@ export const Header = styled.div`
 `;
 
 export const FormSection = styled.div`
-  height: 60vh;
+  // height: 60vh;
   //   text-align: center;
-  width: 50vh;
-  margin: auto;
+  width: 480px;
+  max-width: 80vh;
+  margin: 20px auto 50px;
 
   span {
     display: block;
@@ -35,13 +36,24 @@ export const FormSection = styled.div`
     text-align: center;
     font-size: 35px;
     font-weight: 700;
-    margin: 20px 0;
+    margin: 0;
   }
 
   Label {
     display: block;
     text-align: left;
     font-size: 18px;
+  }
+
+  .invalid-message {
+    font-size: 13px;
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .hidden {
+    display: none;
+    visibility: hidden;
   }
 
   input {
@@ -76,6 +88,10 @@ export const FormSection = styled.div`
 
   input:focus {
     border: 2px solid #2fe070;
+  }
+
+  .invalid:focus{
+    border: 2px solid red;
   }
 
   input[type="checkbox"] {
