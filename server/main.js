@@ -1,34 +1,38 @@
 import { config } from "dotenv";
 import path from "path";
-import pkg from "apollo-server";
-const { ApolloServer, PubSub } = pkg;
+import { ApolloServer } from "apollo-server";
+import { PubSub } from "graphql-subscriptions";
 import connectDB from "./config/db.js";
-import express from "express";
 import colors from "colors";
 import morgan from "morgan";
+import { typeDefs } from "./graphql/typeDefs.js";
+import resolvers from "./graphql/resolvers/index.js";
 
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 config();
 connectDB();
-const app = express();
-
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
-
-app.use(express.json());
 
 const __dirname = path.resolve();
 
-app.use(notFound);
-app.use(errorHandler);
+const pubsub = new PubSub();
 
-const PORT = process.env.PORT || 5000;
+const server = new ApolloServer({
+  typeDefs: typeDefs,
+  resolvers: resolvers,
+  context: ({ req }) => ({ req, pubsub }),
+});
 
-app.listen(
-  PORT,
+if (process.env.NODE_ENV === "development") {
+  console.log("all works");
+}
+
+const __port__ = process.env.PORT || 5000;
+
+server.listen(
+  __port__,
   console.log(
-    `Server is running in ${process.env.NODE_ENV} mode on ${PORT}`.yellow.bold
+    `Server is running in ${process.env.NODE_ENV} mode on ${__port__}`.yellow
+      .bold
   )
 );

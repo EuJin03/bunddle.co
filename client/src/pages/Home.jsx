@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import MaterialUIChip from "@material-ui/core/Chip";
 import * as S from "./Home-styled";
@@ -28,6 +28,26 @@ import SearchIcon from "@material-ui/icons/Search";
 ///// Home Component /////
 
 const Home = () => {
+  const [scrollPosition, setPosition] = useState(0);
+  const [toggle, setToggle] = useState(false);
+
+  useLayoutEffect(() => {
+    function updatePosition() {
+      setPosition(window.pageYOffset);
+    }
+    window.addEventListener("scroll", updatePosition);
+    console.log(scrollPosition);
+    updatePosition();
+
+    if (scrollPosition > 270) {
+      setToggle(true);
+    } else {
+      setToggle(false);
+    }
+
+    return () => window.removeEventListener("scroll", updatePosition);
+  }, [scrollPosition]);
+
   const handleClick = () => {
     return;
   };
